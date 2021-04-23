@@ -64,6 +64,13 @@ public class UsersDaoImp implements UsersDao {
         jdbcTemplate.batchUpdate(sql,sqlArgs);
     }
 
+    @Override
+    public List<Users> getAllUsers() {
+        String sql = "SELECT * FROM users";
+        List<Users> users = jdbcTemplate.query(sql, new UsersRowMapper());
+        return users;
+    }
+
 /*    public DataSource getDataSource(){
         String url = "jdbc:mysql://127.0.0.1/dxc";
         String username = "root";

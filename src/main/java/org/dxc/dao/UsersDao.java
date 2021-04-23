@@ -10,4 +10,5 @@ public interface UsersDao {
     public void delRecordByNamenCity(String name,String city);
     public void truncateData();
     public  void insert(List<Users> users);
+    public List<Users> getAllUsers();
 }

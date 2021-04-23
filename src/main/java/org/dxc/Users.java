@@ -8,11 +8,14 @@ public class Users {
     private String password;
     private String city;
 
-    public Users(int id, String username, String email, String password, String city) {
+    public Users() {
+    }
+
+    public Users(int id, String name, String emails, String passwd, String city) {
         this.id = id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
+        this.username = name;
+        this.email = emails;
+        this.password = passwd;
         this.city = city;
     }
 
@@ -34,5 +37,10 @@ public class Users {
 
     public String getCity() {
         return city;
+    }
+
+    @Override
+    public String toString() {
+        return "\n Username is  "+username+"\t\t\tPassword is  "+password;
     }
 }
