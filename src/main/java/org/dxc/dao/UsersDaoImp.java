@@ -28,6 +28,13 @@ public class UsersDaoImp implements UsersDao {
         System.out.println("No.of rows inserted is " + no_of_rows);
     }
 
+    @Override
+    public void delRecordbyID(int id) {
+        String delSQL = "DELETE FROM users where id = ?";
+        int noRecordsdel = jdbcTemplate.update(delSQL,id);
+        System.out.println("No of records deleted is "+noRecordsdel);
+    }
+
 /*    public DataSource getDataSource(){
         String url = "jdbc:mysql://127.0.0.1/dxc";
         String username = "root";

@@ -10,7 +10,12 @@ public class App
     public static void main( String[] args )
     {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        UsersDao usersDao = (UsersDao)  context.getBean("daoImp");
+        usersDao.delRecordbyID(12);
+       // insertRecord(context);
+    }
 
+    private static void insertRecord(ApplicationContext context) {
         Users myUsers = new Users(12,"telide","dama@abc.com","manade","telidu");
         UsersDao usersDao = (UsersDao)  context.getBean("daoImp");
         usersDao.insert(myUsers);

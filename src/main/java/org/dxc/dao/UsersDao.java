@@ -4,4 +4,5 @@ import org.dxc.Users;
 
 public interface UsersDao {
     public void insert(Users users);
+    public void delRecordbyID(int id);
 }
