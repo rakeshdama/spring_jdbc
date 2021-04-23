@@ -2,6 +2,7 @@ package org.dxc.dao;
 
 import org.dxc.Users;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -67,7 +68,8 @@ public class UsersDaoImp implements UsersDao {
     @Override
     public List<Users> getAllUsers() {
         String sql = "SELECT * FROM users";
-        List<Users> users = jdbcTemplate.query(sql, new UsersRowMapper());
+        //List<Users> users = jdbcTemplate.query(sql, new UsersRowMapper());
+        List<Users> users = (List<Users>) jdbcTemplate.query(sql, new StudentResultSetExtractor());
         return users;
     }
 
