@@ -4,6 +4,9 @@ import org.dxc.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
+import java.util.List;
 /*
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
@@ -48,6 +51,17 @@ public class UsersDaoImp implements UsersDao {
         String sql = "Truncate table user1";
         int deleted = jdbcTemplate.update(sql);
         System.out.println(deleted);
+    }
+
+    @Override
+    public void insert(List<Users> users) {
+        String sql = "Insert into users values(?,?,?,?,?)";
+        ArrayList<Object[]> sqlArgs = new ArrayList<>();
+        for (Users user : users){
+            Object[] userData = {user.getId(),user.getUsername(),user.getEmail(),user.getPassword(),user.getCity()};
+            sqlArgs.add(userData);
+        }
+        jdbcTemplate.batchUpdate(sql,sqlArgs);
     }
 
 /*    public DataSource getDataSource(){
