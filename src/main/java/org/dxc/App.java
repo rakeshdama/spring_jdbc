@@ -13,7 +13,8 @@ public class App
         UsersDao usersDao = (UsersDao)  context.getBean("daoImp");
        // usersDao.delRecordbyID(12);
        // insertRecord(context);
-        usersDao.delRecordByNamenCity("Rakesh","Hyderabad");
+        //usersDao.delRecordByNamenCity("Rakesh","Tirupati");
+        usersDao.truncateData();
     }
 
     private static void insertRecord(ApplicationContext context) {

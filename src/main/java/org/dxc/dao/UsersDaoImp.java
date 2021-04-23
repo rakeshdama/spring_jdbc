@@ -37,10 +37,17 @@ public class UsersDaoImp implements UsersDao {
 
     @Override
     public void delRecordByNamenCity(String name, String city) {
-        String sql = "DELETE FROM users WHERE names = ? OR city = ?";
+        String sql = "DELETE FROM users WHERE names = ? AND city = ?";
         Object object[]= {name,city};
         int noRecordsDel = jdbcTemplate.update(sql,object);
         System.out.println(noRecordsDel);
+    }
+
+    @Override
+    public void truncateData() {
+        String sql = "Truncate table user1";
+        int deleted = jdbcTemplate.update(sql);
+        System.out.println(deleted);
     }
 
 /*    public DataSource getDataSource(){
