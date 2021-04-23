@@ -35,6 +35,14 @@ public class UsersDaoImp implements UsersDao {
         System.out.println("No of records deleted is "+noRecordsdel);
     }
 
+    @Override
+    public void delRecordByNamenCity(String name, String city) {
+        String sql = "DELETE FROM users WHERE names = ? OR city = ?";
+        Object object[]= {name,city};
+        int noRecordsDel = jdbcTemplate.update(sql,object);
+        System.out.println(noRecordsDel);
+    }
+
 /*    public DataSource getDataSource(){
         String url = "jdbc:mysql://127.0.0.1/dxc";
         String username = "root";

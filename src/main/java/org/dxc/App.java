@@ -11,8 +11,9 @@ public class App
     {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
         UsersDao usersDao = (UsersDao)  context.getBean("daoImp");
-        usersDao.delRecordbyID(12);
+       // usersDao.delRecordbyID(12);
        // insertRecord(context);
+        usersDao.delRecordByNamenCity("Rakesh","Hyderabad");
     }
 
     private static void insertRecord(ApplicationContext context) {
