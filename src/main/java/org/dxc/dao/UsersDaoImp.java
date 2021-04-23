@@ -1,14 +1,19 @@
 package org.dxc.dao;
 
 import org.dxc.Users;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 /*
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 */
 
+@Repository("daoImp")
 public class UsersDaoImp implements UsersDao {
+
+    @Autowired
     private JdbcTemplate jdbcTemplate; // = new JdbcTemplate(getDataSource());
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
@@ -18,9 +23,9 @@ public class UsersDaoImp implements UsersDao {
     @Override
     public void insert(Users users) {
         String sql = "INSERT INTO users VALUES(?,?,?,?,?)";
-        Object[] objects = {users.getId(),users.getUsername(),users.getEmail(), users.getPassword() ,users.getEmail()};
+        Object[] objects = {users.getId(), users.getUsername(), users.getEmail(), users.getPassword(), users.getEmail()};
         int no_of_rows = jdbcTemplate.update(sql, objects);
-        System.out.println("No.of rows inserted is "+no_of_rows);
+        System.out.println("No.of rows inserted is " + no_of_rows);
     }
 
 /*    public DataSource getDataSource(){
